@@ -22,7 +22,7 @@ st.write(dt.head(10))
 st.subheader("สถิติโรคหัวใจ")
 st.write(dt.describe())
 st.write("สถิติจำนวนเพศหญิง = 0 ชาย = 1")
-st.write(dt.groupby('sex')['sex'].count)
+st.write(dt.groupby('sex')['sex'].count())
 
 st.subheader("data sex")
 count_male = dt.groupby('Sex').size()[1]
