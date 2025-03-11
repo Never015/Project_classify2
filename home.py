@@ -1,8 +1,8 @@
-#from sklearn.neighbors import KNeighborsClassifier  
+from sklearn.neighbors import KNeighborsClassifier  
 import streamlit as st
 import pandas as pd
-#import numpy as np
-#import matplotlib.pyplot as plt
+import numpy as np
+import matplotlib.pyplot as plt
 
 st.title("🫀🫀🫀การพยากรณ์โรคหัวใจล้มเหลวด้วยเทคนิคเหมืองข้อมูล🫀🫀🫀")
 
@@ -39,3 +39,43 @@ dxage = [average_male_age, average_female_age]
 dxage2 = pd.DataFrame(dxage, index=["Male", "Female"])
 st.bar_chart(dxage2)
 
+html_8 = """
+<div style="background-color:#6BD5DA;padding:15px;border-radius:15px 15px 15px 15px;border-style:'solid';border-color:black">
+<center><h5>ทำนายข้อมูล</h5></center>
+</div>
+"""
+st.markdown(html_8, unsafe_allow_html=True)
+st.markdown("")
+
+A1 = st.number_input("กรุณาเลือกข้อมูล Age(อายุ)")
+A2 = st.number_input("กรุณาเลือกข้อมูล Sex(เพศ)ชาย=1 หญิง=0")
+A3 = st.number_input("กรุณาเลือกข้อมูล ChestPainType ASY = 1 ATA =2 NAP = 3 TA = 4")
+A4 = st.number_input("กรุณาเลือกข้อมูล RestingBP 0 - 200")
+A5 = st.number_input("กรุณาเลือกข้อมูล Cholesterol 0 - 603")
+A6 = st.number_input("กรุณาเลือกข้อมูล FastingBS 0-1")
+A7 = st.number_input("กรุณาเลือกข้อมูล RestingECG LVH = 1 Normal = 2 ST =3")
+A8 = st.number_input("กรุณาเลือกข้อมูล MaxHR 0 - 202")
+A9 = st.number_input("กรุณาเลือกข้อมูล ExerciseAngina Y = 1 N = 0")
+A10 = st.number_input("กรุณาเลือกข้อมูล Oldpeak -2.6 - 6.2")
+A11= st.number_input("กรุณาเลือกข้อมูล ST_Slope Down = 1 Flat = 2 UP = 3")
+
+if st.button("ทำนายผล"):
+    #st.write("ทำนาย")
+   dt = pd.read_csv("./data/hearto2.csv") 
+   X = dt.drop('HeartDisease', axis=1)
+   y = dt.variety   
+
+   Knn_model = KNeighborsClassifier(n_neighbors=3)
+   Knn_model.fit(X, y)  
+    
+   x_input = np.array([[A1,A2,A3,A4,A5,A6,A7,A8,A9,A10,A11]])
+   st.write(Knn_model.predict(x_input))
+   
+   out=Knn_model.predict(x_input)
+
+   if out[0] == 1 :
+    st.image("./img/HeartDisease01.jpg")
+   else:
+    st.image("./img/HT.jpg")
+else:
+    st.write("ไม่ทำนาย")
