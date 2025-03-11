@@ -61,7 +61,7 @@ A11= st.number_input("กรุณาเลือกข้อมูล ST_Slope 
 
 if st.button("ทำนายผล"):
     #st.write("ทำนาย")
-   dt = pd.read_csv("./data/hearto2.csv") 
+   dt = pd.read_csv("./data/heart02.csv") 
    X = dt.drop('HeartDisease', axis=1)
    y = dt.variety   
 
