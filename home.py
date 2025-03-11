@@ -53,11 +53,11 @@ A3 = st.selectbox("กรุณาเลือก ChestPainType ASY = 1 ATA =2 N
 A4 = st.number_input("กรุณาเลือกข้อมูล RestingBP 0 - 200")
 A5 = st.number_input("กรุณาเลือกข้อมูล Cholesterol 0 - 603")
 A6 = st.selectbox("กรุณาเลือก FastingBS ",[0,1])
-A7 = st.selectbox("กรุณาเลือก RestingECG LVH = 1 Normal = 2 ST =3"[1,2,3])
+A7 = st.selectbox("กรุณาเลือก RestingECG LVH = 1 Normal = 2 ST =3",[1,2,3])
 A8 = st.number_input("กรุณาเลือกข้อมูล MaxHR 0 - 202")
-A9 = st.selectbox("กรุณาเลือก ExerciseAngina Y = 1 N = 0"[0,1])
+A9 = st.selectbox("กรุณาเลือก ExerciseAngina Y = 1 N = 0",[0,1])
 A10 = st.number_input("กรุณาเลือกข้อมูล Oldpeak -2.6 - 6.2")
-A11= st.selectbox("กรุณาเลือก ST_Slope Down = 1 Flat = 2 UP = 3"[1,2,3])
+A11= st.selectbox("กรุณาเลือก ST_Slope Down = 1 Flat = 2 UP = 3",[1,2,3])
 
 if st.button("ทำนายผล"):
     #st.write("ทำนาย")
